@@ -71,6 +71,12 @@ group :test do
   gem 'webdrivers'
 end
 
+group :development, :test do
+  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem 'debug', platforms: %i[mri mingw x64_mingw]
+  gem 'rspec-rails', '~> 5.1.2'
+end
+
 gem 'rubocop', '>= 1.0', '< 2.0'
 
 # Use postgresql as the database for Active Record
