@@ -29,7 +29,7 @@ RSpec.describe Post, type: :model do
   context 'Call recent comments on a post' do
     post = Post.create(user:, title: 'Test', comments_counter: 0, likes_counter: 0, user_id: 2)
     5.times { Comment.create(post:, user:, text: 'Hello', user_id: 10) }
-    last_comment = Comment.create(post:, user:, text: 'Last one', user_id: 3)
+    Comment.create(post:, user:, text: 'Last one', user_id: 3)
 
     it 'should return the last 5 comments on the post' do
       recent_comments = post.recent_comments
@@ -41,7 +41,7 @@ RSpec.describe Post, type: :model do
     post = Post.create(user:, title: 'Test', comments_counter: 0, likes_counter: 0, user_id: 4)
 
     it 'should increment the posts_counter of the user of Post' do
-      previous_counter = user.posts_counter || 0
+      user.posts_counter || 0
       post.increment_counter
       expect(user.posts_counter).to eql(0)
     end
